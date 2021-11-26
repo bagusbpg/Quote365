@@ -35,14 +35,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5pt"
                 android:text="@string/refresh"
-                android:textSize="20sp" />
+                android:textSize="15sp"
+                tools:ignore="ButtonStyle" />
             <Button
                 android:id="@+id/shareButton"
                 android:layout_width="60pt"
                 android:layout_height="wrap_content"
                 android:layout_margin="5pt"
                 android:text="@string/share"
-                android:textSize="20sp" />
+                android:textSize="15sp"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
