@@ -8,8 +8,13 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bindingMain: ActivityMainBinding
-    val quote = QuoteData.data
-    val size = quote.size
+    private val quote = QuoteData.data
+    private val size = quote.size
+
+    companion object {
+        private const val STATE_RESULT1 = "state_result"
+        private const val STATE_RESULT2 = "state_result"
+    }
 
     private fun showQuote() {
         val index = Random.nextInt(0, size)
@@ -34,5 +39,18 @@ class MainActivity : AppCompatActivity() {
         showQuote()
         bindingMain.refreshButton.setOnClickListener { showQuote() }
         bindingMain.shareButton.setOnClickListener { shareQuote() }
+
+        if (savedInstanceState != null) {
+            val result1 = savedInstanceState.getString(STATE_RESULT1)
+            val result2 = savedInstanceState.getString(STATE_RESULT2)
+            bindingMain.viewQuote.text = result1
+            bindingMain.viewPerson.text = result2
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(STATE_RESULT1, bindingMain.viewQuote.text.toString())
+        outState.putString(STATE_RESULT2, bindingMain.viewPerson.text.toString())
     }
 }
